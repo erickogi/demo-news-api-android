@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <android.support.v4.widget.SwipeRefreshLayout
+
+        android:id="@+id/swipeContainer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <!--<ScrollView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent">-->
+        <LinearLayout
+
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+    <android.support.v7.widget.RecyclerView
+
+        android:id="@+id/all_news_horizontal_recyclerView"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content">
+
+
+
+    </android.support.v7.widget.RecyclerView>
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_weight="4"
+                android:divider="@null"
+                android:id="@+id/all_news_vertical_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+
+
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+        <!--</ScrollView>-->
+    </android.support.v4.widget.SwipeRefreshLayout>
+</LinearLayout>

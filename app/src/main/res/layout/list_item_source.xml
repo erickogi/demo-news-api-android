@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    app:cardPreventCornerOverlap="true"
+
+    android:layout_margin="8dp"
+    app:cardBackgroundColor="#FFFFFF"
+    android:layout_height="70dp">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!--<ImageView-->
+            <!--android:id="@+id/img"-->
+            <!--android:layout_weight="3"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp" />-->
+
+        <TextView
+            android:layout_margin="4dp"
+            android:id="@+id/txt_source_name"
+
+            android:text="NAME"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <!--<TextView-->
+            <!--android:id="@+id/txt_source_description"-->
+            <!--android:layout_weight="1"-->
+            <!--android:text="Desc"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp" />-->
+        <!--<TextView-->
+            <!--android:id="@+id/txt_source_id"-->
+            <!--android:layout_weight="1"-->
+            <!--android:visibility="invisible"-->
+            <!--android:text="id"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp" />-->
+    </LinearLayout>
+
+
+
+</android.support.v7.widget.CardView>
