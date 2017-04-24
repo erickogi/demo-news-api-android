@@ -6,42 +6,42 @@ package com.erickogi14gmail.demo_news_api_android1.Utils;
 
 public class Constants {
 
-    public final static String API_KEY="a063b2f6f85b4df6b9bce476d25f3e60";
-    public final static String ARTICLES_END_POINT="https://newsapi.org/v1/articles?source=";
-    public final static String SOURCES_END_POINT="https://newsapi.org/v1/sources";
+    public final static String API_KEY = "a063b2f6f85b4df6b9bce476d25f3e60";
+    public final static String ARTICLES_END_POINT = "https://newsapi.org/v1/articles?source=";
+    public final static String SOURCES_END_POINT = "https://newsapi.org/v1/sources";
 
-    public final static int ALL_SORUCES_PARSING_CODE=100;
-    public final static int ALL_TECH_SOURCES_PARSING_CODE=200;
+    public final static int ALL_SORUCES_PARSING_CODE = 100;
+    public final static int ALL_TECH_SOURCES_PARSING_CODE = 200;
 
-    public final static String KEY_CATEGORY_TECH="technology";
-    public final static String KEY_URL_TAG="key_url";
-    public final static String KEY_URL_TO_IMAGE_TAG="key_url_to_image";
-
-
-//SOURCE
-public final static String KEY_SOURCE_ID="id";
-    public final static String KEY_SOURCE_NAME="name";
-    public final static String KEY_SOURCE_DESCRIPTION="description";
-    public final static String KEY_SOURCE_URL="url";
-    public final static String KEY_SOURCE_CATEGORY="category";
-    public final static String KEY_SOURCE_LANGUAGE="language";
-    public final static String KEY_SOURCE_COUNTRY="country";
+    public final static String KEY_CATEGORY_TECH = "technology";
+    public final static String KEY_URL_TAG = "key_url";
+    public final static String KEY_URL_TO_IMAGE_TAG = "key_url_to_image";
 
 
+    //SOURCE
+    public final static String KEY_SOURCE_ID = "id";
+    public final static String KEY_SOURCE_NAME = "name";
+    public final static String KEY_SOURCE_DESCRIPTION = "description";
+    public final static String KEY_SOURCE_URL = "url";
+    public final static String KEY_SOURCE_CATEGORY = "category";
+    public final static String KEY_SOURCE_LANGUAGE = "language";
+    public final static String KEY_SOURCE_COUNTRY = "country";
 
-//ARTICLES
-public final static String KEY_ARTICLE_AUTOR="author";
-    public final static String KEY_ARTICLE_TITLE="title";
-    public final static String KEY_ARTICLE_DESCRIPTION="description";
-    public final static String KEY_ARTICLE_URL="url";
-    public final static String KEY_ARTICLE_URLTOIMAGE="urlToImage";
-    public final static String KEY_ARTICLE_PUBLISHEDAT="publishedAt";
-//REQUEST CODES
-public final static int KEY_ARTICLE_REQUEST=200;
-    public final static int KEY_SOURCES_REQUEST=300;
+
+    //ARTICLES
+    public final static String KEY_ARTICLE_AUTOR = "author";
+    public final static String KEY_ARTICLE_TITLE = "title";
+    public final static String KEY_ARTICLE_DESCRIPTION = "description";
+    public final static String KEY_ARTICLE_URL = "url";
+    public final static String KEY_ARTICLE_URLTOIMAGE = "urlToImage";
+    public final static String KEY_ARTICLE_PUBLISHEDAT = "publishedAt";
+    //REQUEST CODES
+    public final static int KEY_ARTICLE_REQUEST = 200;
+    public final static int KEY_SOURCES_REQUEST = 300;
 
     //CATEGORY INTENTS KEYS
     public static final String KEY_CATEGORY_INTENT = "com.erickogi14gmail.demo_news_api_android1_category";
+    public static final String KEY_CATEGORY_LABEL = "com.erickogi14gmail.demo_news_api_android1_label";
 
 
     public final static String KEY_CATEGORY_BUSINESS = "business";

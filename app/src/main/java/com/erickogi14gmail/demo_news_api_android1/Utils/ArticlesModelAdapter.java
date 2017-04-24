@@ -21,11 +21,8 @@ public class ArticlesModelAdapter extends RecyclerView.Adapter<ArticlesModelAdap
     Context context;
     private ArrayList<ArticlesModel> modelList;
 
-    public ArticlesModelAdapter(Context context){
-        this.context = context;
-        // this.listData = listData;
-    }
-    public ArticlesModelAdapter(ArrayList<ArticlesModel> modelList,Context context) {
+
+    public ArticlesModelAdapter(ArrayList<ArticlesModel> modelList, Context context) {
         this.modelList = modelList;
         this.context = context;
     }
@@ -42,20 +39,20 @@ public class ArticlesModelAdapter extends RecyclerView.Adapter<ArticlesModelAdap
     public void onBindViewHolder(MyViewHolder holder, int position) {
         ArticlesModel model = modelList.get(position);
         holder.textName.setText(model.getTitle());
-         holder.textDescription.setText(model.getDescription());
+        holder.textDescription.setText(model.getDescription());
         if (model.getPublishedAt().equals("null") || model.getPublishedAt().isEmpty()) {
             holder.textDate.setText("");
         } else {
             holder.textDate.setText(model.getPublishedAt());
         }
 
-        if(model.getUrlToImage().equals("null")||model.getUrlToImage().equalsIgnoreCase("null")){
+        if (model.getUrlToImage().equals("null") || model.getUrlToImage().equalsIgnoreCase("null")) {
 
 
         }
 
-        PicassoClient.LoadImage(context,model.getUrlToImage(),
-                holder.loadedImage,holder.textDate);
+        PicassoClient.LoadImage(context, model.getUrlToImage(),
+                holder.loadedImage, holder.textDate);
     }
 
     @Override
@@ -63,11 +60,6 @@ public class ArticlesModelAdapter extends RecyclerView.Adapter<ArticlesModelAdap
         return modelList.size();
     }
 
-    public interface OnItemClickListener {
-
-        void onItemClick(SourcesModel item);
-
-    }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 

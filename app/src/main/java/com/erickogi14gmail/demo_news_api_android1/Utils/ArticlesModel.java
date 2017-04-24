@@ -5,12 +5,6 @@ package com.erickogi14gmail.demo_news_api_android1.Utils;
  */
 
 public class ArticlesModel {
-//    "author": "Bryan Clark",
-//            "title": "Target is asking for trouble with new Mario Kart-themed stores",
-//            "description": "In advance of the upcoming release of Mario Kart 8 Deluxe, Target has gone Nintendo crazy. According to its senior vice president of merchandising, Scotty Nygaard in a statement, it's ...",
-//            "url": "https://thenextweb.com/gaming/2017/04/22/target-is-asking-for-trouble-with-new-mario-kart-themed-stores/",
-//            "urlToImage": "https://cdn3.tnwcdn.com/wp-content/blogs.dir/1/files/2017/04/Starting-line-2.jpg",
-//            "publishedAt": "2017-04-22T02:38:17Z"
 
     private String author;
     private String title;

@@ -2,6 +2,7 @@ package com.erickogi14gmail.demo_news_api_android1.Login;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -19,6 +20,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.erickogi14gmail.demo_news_api_android1.R;
+import com.muddzdev.styleabletoastlibrary.StyleableToast;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -174,7 +176,13 @@ public class Register  extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(Register.this,error.toString(),Toast.LENGTH_LONG).show();
+                        StyleableToast st = new StyleableToast(getApplicationContext(), "Network error", Toast.LENGTH_SHORT);
+                        st.setBackgroundColor(Color.parseColor("#ff9040"));
+                        st.setTextColor(Color.WHITE);
+                        st.setIcon(R.drawable.ic_error_outline_white_24dp);
+
+                        st.setMaxAlpha();
+                        st.show();
                     }
                 }){
             @Override

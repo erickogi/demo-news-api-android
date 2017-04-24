@@ -18,59 +18,48 @@ import com.squareup.picasso.Picasso;
 
 public class PicassoClient {
 
-    public static void LoadImage(final Context c, String url, ImageView img, final TextView textView)
-    {
+    public static void LoadImage(final Context c, String url, ImageView img, final TextView textView) {
 
 
-        if (url!=null && url.length()>0)
-        {
+        if (url != null && url.length() > 0) {
             try {
                 Picasso.with(c).load(url).placeholder(R.drawable.placeholder).into(img);
 
 
-
-
-               // Bitmap photo = BitmapFactory.decodeResource(c.getResources(), img.getDrawable());
-                BitmapDrawable p=(BitmapDrawable)img.getDrawable();
-                Bitmap bitmap=p.getBitmap();
+                BitmapDrawable p = (BitmapDrawable) img.getDrawable();
+                Bitmap bitmap = p.getBitmap();
 
                 Palette.generateAsync(bitmap, new Palette.PaletteAsyncListener() {
                     public void onGenerated(Palette palette) {
-                       try {
-                           int bgColor = palette.getMutedColor(c.getResources().getColor(android.R.color.black));
-                           textView.setBackgroundColor(bgColor);
-                       }
-                       catch (Exception n){
+                        try {
+                            int bgColor = palette.getMutedColor(c.getResources().getColor(android.R.color.black));
+                            textView.setBackgroundColor(bgColor);
+                        } catch (Exception n) {
 
-                       }
+                        }
 
                     }
-            });
-            }
-            catch (Exception b)
-            {
+                });
+            } catch (Exception b) {
                 Picasso.with(c).load(R.drawable.placeholder).into(img);
             }
 
 
-        }
-        else {
-           img.setVisibility(View.INVISIBLE);
-            //Picasso.with(c).load(R.drawable.placeholder).into(img);
+        } else {
+            img.setVisibility(View.INVISIBLE);
+
         }
     }
 
-    public static void LoadImageWebView(final Context c, String url, ImageView img, final Toolbar toolbar)
-    {
+    public static void LoadImageWebView(final Context c, String url, ImageView img, final Toolbar toolbar) {
 
 
-        if (url!=null && url.length()>0)
-        {
+        if (url != null && url.length() > 0) {
             try {
                 Picasso.with(c).load(url).placeholder(R.drawable.placeholder).into(img);
 
-                BitmapDrawable p=(BitmapDrawable)img.getDrawable();
-                Bitmap bitmap=p.getBitmap();
+                BitmapDrawable p = (BitmapDrawable) img.getDrawable();
+                Bitmap bitmap = p.getBitmap();
 
                 Palette.generateAsync(bitmap, new Palette.PaletteAsyncListener() {
                     public void onGenerated(Palette palette) {
@@ -79,24 +68,20 @@ public class PicassoClient {
                             toolbar.setBackgroundColor(bgColor);
 
 
-                        }
-                        catch (Exception n){
+                        } catch (Exception n) {
 
                         }
 
                     }
                 });
-            }
-            catch (Exception b)
-            {
+            } catch (Exception b) {
                 Picasso.with(c).load(R.drawable.placeholder).into(img);
             }
 
 
-        }
-        else {
+        } else {
             img.setVisibility(View.INVISIBLE);
-            //Picasso.with(c).load(R.drawable.placeholder).into(img);
+
         }
     }
 }

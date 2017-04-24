@@ -33,6 +33,7 @@ import com.erickogi14gmail.demo_news_api_android1.Utils.Constants;
 import com.erickogi14gmail.demo_news_api_android1.Utils.SorcesModelAdapter;
 import com.erickogi14gmail.demo_news_api_android1.Utils.SourcesJsonParser;
 import com.erickogi14gmail.demo_news_api_android1.Utils.SourcesModel;
+import com.muddzdev.styleabletoastlibrary.StyleableToast;
 
 import java.util.ArrayList;
 
@@ -109,10 +110,10 @@ public class fragment_all_news extends android.support.v4.app.Fragment {
             @Override
             public void onClick(View view, int position) {
                 Intent intent = new Intent(getActivity(), ReadArticle.class);
-                intent.putExtra(Constants.KEY_URL_TAG,articles.get(position).getUrl());
+                intent.putExtra(Constants.KEY_URL_TAG, articles.get(position).getUrl());
                 startActivity(intent);
 
- }
+            }
 
             @Override
             public void onLongClick(View view, int position) {
@@ -139,15 +140,13 @@ public class fragment_all_news extends android.support.v4.app.Fragment {
 
     private void hideViews() {
 
-        //   Toast.makeText(context, "scrolledd", Toast.LENGTH_SHORT).show();
-//         FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) fab.getLayoutParams();
         int fabBottomMargin = 45;
         fab.animate().translationY(fab.getHeight() + fabBottomMargin).setInterpolator(new AccelerateInterpolator(2)).start();
     }
 
     private void showViews() {
         fab.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2)).start();
-        //  mFabButton.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2)).start();
+
     }
 
     public void setLayout(boolean isListView) {
@@ -206,8 +205,6 @@ public class fragment_all_news extends android.support.v4.app.Fragment {
             mStaggeredLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
 
 
-
-
         } else {
 
             mStaggeredLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
@@ -235,7 +232,7 @@ public class fragment_all_news extends android.support.v4.app.Fragment {
 
                         if (response != null || !response.isEmpty()) {
 
-                            sourcesModelArrayList = SourcesJsonParser.parseData(response,Constants.ALL_SORUCES_PARSING_CODE);
+                            sourcesModelArrayList = SourcesJsonParser.parseData(response, Constants.ALL_SORUCES_PARSING_CODE);
 
                             setRecyclerView_sources(sourcesModelArrayList);
 
@@ -249,7 +246,13 @@ public class fragment_all_news extends android.support.v4.app.Fragment {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        StyleableToast st = new StyleableToast(getApplicationContext(), "Network error", Toast.LENGTH_SHORT);
+                        st.setBackgroundColor(Color.parseColor("#ff9040"));
+                        st.setTextColor(Color.WHITE);
+                        st.setIcon(R.drawable.ic_error_outline_white_24dp);
 
+                        st.setMaxAlpha();
+                        st.show();
                         swipe_refresh_layout.setRefreshing(false);
 
 
@@ -287,7 +290,13 @@ public class fragment_all_news extends android.support.v4.app.Fragment {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), "Network error", Toast.LENGTH_SHORT).show();
+                        StyleableToast st = new StyleableToast(getApplicationContext(), "Network error", Toast.LENGTH_SHORT);
+                        st.setBackgroundColor(Color.parseColor("#ff9040"));
+                        st.setTextColor(Color.WHITE);
+                        st.setIcon(R.drawable.ic_error_outline_white_24dp);
+
+                        st.setMaxAlpha();
+                        st.show();
                         swipe_refresh_layout.setRefreshing(false);
                     }
                 });

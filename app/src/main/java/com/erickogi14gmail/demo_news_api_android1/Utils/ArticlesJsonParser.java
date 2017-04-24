@@ -1,7 +1,5 @@
 package com.erickogi14gmail.demo_news_api_android1.Utils;
 
-import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -39,14 +37,11 @@ public class ArticlesJsonParser {
                 model.setPublishedAt(obj.getString(Constants.KEY_ARTICLE_PUBLISHEDAT));
 
 
-
-
                 articlesModelArrayList.add(model);
             }
             return articlesModelArrayList;
 
-        }
-        catch (JSONException ex) {
+        } catch (JSONException ex) {
             ex.printStackTrace();
             return null;
         }

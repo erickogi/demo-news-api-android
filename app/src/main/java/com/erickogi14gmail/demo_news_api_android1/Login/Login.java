@@ -108,13 +108,13 @@ public class Login extends AppCompatActivity {
     public void onLoginFailed() {
 
         StyleableToast st = new StyleableToast(Login.this, "Login failed", Toast.LENGTH_SHORT);
-        st.setBackgroundColor(Color.parseColor("#ff5a5f"));
+        st.setBackgroundColor(Color.parseColor("#ff9040"));
         st.setTextColor(Color.WHITE);
         st.setIcon(R.drawable.ic_error_outline_white_24dp);
 
         st.setMaxAlpha();
         st.show();
-        // Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
+
 
         loginButton.setEnabled(true);
     }
@@ -153,7 +153,7 @@ public class Login extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        //If we are getting success from server
+
                         if (response.equalsIgnoreCase(Constants.LOGIN_SUCCESS)) {
 
                             SharedPreferences sharedPreferences = Login.this.getSharedPreferences(Constants.SHARED_PREF_NAME, Context.MODE_PRIVATE);
@@ -166,7 +166,6 @@ public class Login extends AppCompatActivity {
                             editor.putString(Constants.EMAIL_SHARED_PREF, email);
 
 
-                            //Saving values to editor
                             editor.commit();
 
 
@@ -176,13 +175,13 @@ public class Login extends AppCompatActivity {
                         } else {
 
                             StyleableToast st = new StyleableToast(Login.this, "Invalid username or password", Toast.LENGTH_SHORT);
-                            st.setBackgroundColor(Color.parseColor("#ff5a5f"));
+                            st.setBackgroundColor(Color.parseColor("#ff9040"));
                             st.setTextColor(Color.WHITE);
                             st.setIcon(R.drawable.ic_error_outline_white_24dp);
 
                             st.setMaxAlpha();
                             st.show();
-                            // Toast.makeText(Login.this, "Invalid username or password", Toast.LENGTH_LONG).show();
+
                         }
                     }
                 },

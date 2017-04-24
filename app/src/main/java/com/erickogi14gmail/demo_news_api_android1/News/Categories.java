@@ -37,6 +37,7 @@ import com.erickogi14gmail.demo_news_api_android1.Utils.Constants;
 import com.erickogi14gmail.demo_news_api_android1.Utils.SorcesModelAdapter;
 import com.erickogi14gmail.demo_news_api_android1.Utils.SourcesJsonParser;
 import com.erickogi14gmail.demo_news_api_android1.Utils.SourcesModel;
+import com.muddzdev.styleabletoastlibrary.StyleableToast;
 
 import java.util.ArrayList;
 
@@ -67,7 +68,7 @@ public class Categories extends AppCompatActivity {
         category = intent.getStringExtra(Constants.KEY_CATEGORY_INTENT);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
+        toolbar.setTitle(intent.getStringExtra(Constants.KEY_CATEGORY_LABEL));
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -157,15 +158,13 @@ public class Categories extends AppCompatActivity {
 
     private void hideViews() {
 
-        //   Toast.makeText(context, "scrolledd", Toast.LENGTH_SHORT).show();
-//         FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) fab.getLayoutParams();
         int fabBottomMargin = 45;
         fab.animate().translationY(fab.getHeight() + fabBottomMargin).setInterpolator(new AccelerateInterpolator(2)).start();
     }
 
     private void showViews() {
         fab.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2)).start();
-        //  mFabButton.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2)).start();
+
     }
 
     public void setLayout(boolean isListView) {
@@ -265,7 +264,13 @@ public class Categories extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        StyleableToast st = new StyleableToast(getApplicationContext(), "Network error", Toast.LENGTH_SHORT);
+                        st.setBackgroundColor(Color.parseColor("#ff9040"));
+                        st.setTextColor(Color.WHITE);
+                        st.setIcon(R.drawable.ic_error_outline_white_24dp);
 
+                        st.setMaxAlpha();
+                        st.show();
                         swipe_refresh_layout.setRefreshing(false);
 
 
@@ -309,7 +314,13 @@ public class Categories extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), "Network error", Toast.LENGTH_SHORT).show();
+                        StyleableToast st = new StyleableToast(getApplicationContext(), "Network error", Toast.LENGTH_SHORT);
+                        st.setBackgroundColor(Color.parseColor("#ff9040"));
+                        st.setTextColor(Color.WHITE);
+                        st.setIcon(R.drawable.ic_error_outline_white_24dp);
+
+                        st.setMaxAlpha();
+                        st.show();
                         swipe_refresh_layout.setRefreshing(false);
                     }
                 });
@@ -321,7 +332,7 @@ public class Categories extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main, menu);
         this.menu = menu;

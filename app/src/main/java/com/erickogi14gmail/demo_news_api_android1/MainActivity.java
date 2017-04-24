@@ -157,21 +157,26 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_business) {
             intent.putExtra(Constants.KEY_CATEGORY_INTENT, Constants.KEY_CATEGORY_BUSINESS);
+            intent.putExtra(Constants.KEY_CATEGORY_LABEL, "Business");
             startActivity(intent);
         } else if (id == R.id.nav_entertainment) {
             intent.putExtra(Constants.KEY_CATEGORY_INTENT, Constants.KEY_CATEGORY_ENTERTAINMENT);
+            intent.putExtra(Constants.KEY_CATEGORY_LABEL, "Entertainment");
             startActivity(intent);
 
         } else if (id == R.id.nav_politics) {
             intent.putExtra(Constants.KEY_CATEGORY_INTENT, Constants.KEY_CATEGORY_POLITICS);
+            intent.putExtra(Constants.KEY_CATEGORY_LABEL, "Political");
             startActivity(intent);
 
         } else if (id == R.id.nav_music) {
             intent.putExtra(Constants.KEY_CATEGORY_INTENT, Constants.KEY_CATEGORY_MUSIC);
+            intent.putExtra(Constants.KEY_CATEGORY_LABEL, "Music");
             startActivity(intent);
 
         } else if (id == R.id.nav_science) {
             intent.putExtra(Constants.KEY_CATEGORY_INTENT, Constants.KEY_CATEGORY_SCIENCE);
+            intent.putExtra(Constants.KEY_CATEGORY_LABEL, "Science/Nature");
             startActivity(intent);
 
         } else if (id == R.id.nav_share) {
@@ -183,6 +188,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(in);
         } else if (id == R.id.nav_sports) {
             intent.putExtra(Constants.KEY_CATEGORY_INTENT, Constants.KEY_CATEGORY_SPORTS);
+            intent.putExtra(Constants.KEY_CATEGORY_LABEL, "Sports");
             startActivity(intent);
         }
 
