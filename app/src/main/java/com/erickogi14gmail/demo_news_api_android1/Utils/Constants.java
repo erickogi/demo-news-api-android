@@ -40,6 +40,17 @@ public final static String KEY_ARTICLE_AUTOR="author";
 public final static int KEY_ARTICLE_REQUEST=200;
     public final static int KEY_SOURCES_REQUEST=300;
 
+    //CATEGORY INTENTS KEYS
+    public static final String KEY_CATEGORY_INTENT = "com.erickogi14gmail.demo_news_api_android1_category";
+
+
+    public final static String KEY_CATEGORY_BUSINESS = "business";
+    public final static String KEY_CATEGORY_ENTERTAINMENT = "entertainment";
+    public final static String KEY_CATEGORY_POLITICS = "politics";
+    public final static String KEY_CATEGORY_SPORTS = "sport";
+    public final static String KEY_CATEGORY_MUSIC = "music";
+    public final static String KEY_CATEGORY_SCIENCE = "science-and-nature";
+
 
     public static final String LOGIN_URL = "http://erickogi.co.ke/fdarad/api/login.php";
 

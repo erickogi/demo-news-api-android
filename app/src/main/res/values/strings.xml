@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">demo-news-api-android1</string>
+    <string name="app_name">News Demo</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -8,8 +8,9 @@
     <string name="title_activity_login">Sign in</string>
 
 
-
-    <string name="title_activity_full_news">FullNews</string>
+    <string name="title_activity_full_news">Article</string>
 
     <string name="title_activity_register">Register</string>
+    <string name="title_activity_read_article">ReadArticle</string>
+    <string name="title_activity_categories">Categories</string>
 </resources>

@@ -10,13 +10,11 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
-import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -45,17 +43,17 @@ import java.util.ArrayList;
 public class fragment_all_news extends android.support.v4.app.Fragment {
     static RequestQueue queue;
     static Context context;
-    private StaggeredGridLayoutManager mStaggeredLayoutManager;
     static RecyclerView.LayoutManager mLayoutManager;
+    static View view;
+    static View viewSource;
+    static ArrayList<ArticlesModel> articles;
     SwipeRefreshLayout swipe_refresh_layout;
     RecyclerView recyclerView_vertical;
     RecyclerView recyclerView_horizontal;
-    static View view;
-    static View viewSource;
-    private boolean isListView;
     FloatingActionButton fab;
     ArrayList<SourcesModel> sources;
-    static ArrayList<ArticlesModel> articles;
+    private StaggeredGridLayoutManager mStaggeredLayoutManager;
+    private boolean isListView;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -94,7 +92,7 @@ public class fragment_all_news extends android.support.v4.app.Fragment {
                     viewSource.setBackgroundColor(Color.WHITE);
                 }
                 viewSource = view;
-                view.setBackgroundColor(Color.RED);
+                view.setBackgroundColor(Color.rgb(255, 144, 64));
                 swipe_refresh_layout.setRefreshing(true);
                 getRecyclerView_articles(sources.get(position).getId());
 
@@ -110,7 +108,7 @@ public class fragment_all_news extends android.support.v4.app.Fragment {
 
             @Override
             public void onClick(View view, int position) {
-                Intent intent=new Intent(getActivity(),FullNews.class);
+                Intent intent = new Intent(getActivity(), ReadArticle.class);
                 intent.putExtra(Constants.KEY_URL_TAG,articles.get(position).getUrl());
                 startActivity(intent);
 
@@ -153,17 +151,8 @@ public class fragment_all_news extends android.support.v4.app.Fragment {
     }
 
     public void setLayout(boolean isListView) {
-//        if (isListView) {
-//          //  mStaggeredLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL);
-//          // this. mStaggeredLayoutManager.setSpanCount(2);
-//
-//            this.isListView = false;
-//        } else {
-//           // mStaggeredLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL);
-//
-//           this. isListView = true;
-//        }
-        setRecyclerView_articles(articles, isListView);
+        this.isListView = isListView;
+        setRecyclerView_articles(articles);
     }
 
     void getRecyclerView_sources() {
@@ -201,27 +190,29 @@ public class fragment_all_news extends android.support.v4.app.Fragment {
 
     }
 
-    public void setRecyclerView_articles(ArrayList<ArticlesModel> articlesModelArrayList, boolean isListView) {
+    public void setRecyclerView_articles(ArrayList<ArticlesModel> articlesModelArrayList) {
         articles = articlesModelArrayList;
         ArticlesModelAdapter adapter;
+
         adapter = new ArticlesModelAdapter(articlesModelArrayList, getContext());
         adapter.notifyDataSetChanged();
+
         swipe_refresh_layout = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
         recyclerView_vertical = (RecyclerView) view.findViewById(R.id.all_news_vertical_recyclerView);
 
         mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        if (this.isListView) {
 
-        if (isListView) {
+            mStaggeredLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
+
+
+
+
+        } else {
 
             mStaggeredLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
 
 
-            this.isListView = false;
-        } else {
-            mStaggeredLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
-
-
-            this.isListView = true;
         }
 
 
@@ -245,7 +236,7 @@ public class fragment_all_news extends android.support.v4.app.Fragment {
                         if (response != null || !response.isEmpty()) {
 
                             sourcesModelArrayList = SourcesJsonParser.parseData(response,Constants.ALL_SORUCES_PARSING_CODE);
-                            // fragment_all_news f = new fragment_all_news();
+
                             setRecyclerView_sources(sourcesModelArrayList);
 
                         } else {
@@ -269,12 +260,6 @@ public class fragment_all_news extends android.support.v4.app.Fragment {
         context = getContext();
     }
 
-    public Context getApplicationContext() {
-        Context applicationContext = getContext();
-        context = applicationContext;
-        return applicationContext;
-    }
-
     public void requestDataArticles(String uri) {
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, uri,
@@ -284,28 +269,17 @@ public class fragment_all_news extends android.support.v4.app.Fragment {
                     public void onResponse(String response) {
 
                         ArrayList<ArticlesModel> articlesModelArrayList;
-//                        if (a == Constants.KEY_SOURCES_REQUEST) {
-//                            if (response != null || !response.isEmpty()) {
-//
-//                                sourcesModelArrayList = SourcesJsonParser.parseData(response);
-//                                fragment_all_news f = new fragment_all_news();
-//                                f.setRecyclerView_sources(sourcesModelArrayList);
-//
-//                            }
-//                        } else if (a == Constants.KEY_ARTICLE_REQUEST) {
-
 
                         if (response != null || !response.isEmpty()) {
 
                             articlesModelArrayList = ArticlesJsonParser.parseData(response);
 
-                            //fragment_all_news f = new fragment_all_news();
-                            setRecyclerView_articles(articlesModelArrayList, false);
+
+                            setRecyclerView_articles(articlesModelArrayList);
 
 
                         }
 
-                        //  }
 
                     }
                 },
@@ -317,10 +291,16 @@ public class fragment_all_news extends android.support.v4.app.Fragment {
                         swipe_refresh_layout.setRefreshing(false);
                     }
                 });
-        // queue = Volley.newRequestQueue(fragment_all_news.context);
+
         queue.add(stringRequest);
 
 
+    }
+
+    public Context getApplicationContext() {
+        Context applicationContext = getContext();
+        context = applicationContext;
+        return applicationContext;
     }
 
 }
