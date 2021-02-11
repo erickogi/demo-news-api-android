@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/demo-news-api-android.iml" filepath="$PROJECT_DIR$/.idea/modules/demo-news-api-android.iml" group="demo-news-api-android" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/demo-news-api-android-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/demo-news-api-android-app.iml" group="demo-news-api-android/app" />
       <module fileurl="file://$PROJECT_DIR$/demo-news-api-android1.iml" filepath="$PROJECT_DIR$/demo-news-api-android1.iml" />
     </modules>
   </component>
